@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="dl_fx:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/dl_fx_Web_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="dl_fx" />
+          <element id="module-output" name="dl_spring" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

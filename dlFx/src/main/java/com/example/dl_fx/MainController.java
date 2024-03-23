@@ -46,7 +46,7 @@ public class MainController implements Initializable {
     @FXML
     public void sendRequest() throws URISyntaxException, IOException, InterruptedException {
         long id = 1L;
-        String uri = "http://localhost:8080/api/page/" + id;
+        String uri = HttpRequests.URI + "page/" + id;
         JsonNode rootNode = HttpRequests.GetRequest(uri);
         ObjectMapper objectMapper = new ObjectMapper();
         ((ObjectNode) rootNode).remove("enabled");

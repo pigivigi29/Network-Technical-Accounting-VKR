@@ -55,7 +55,7 @@ public class SecondController implements Initializable {
     @FXML
     public void sendRequest() throws IOException, URISyntaxException, InterruptedException {
         AuthorizedUserDto authorizedUserDto = new AuthorizedUserDto(login.getText(), password.getText());
-        String uri = "http://localhost:8080/api/page";
+        String uri = HttpRequests.URI + "page";
         JsonNode rootNode = HttpRequests.PostRequest(authorizedUserDto, uri);
         ObjectMapper objectMapper = new ObjectMapper();
         ((ObjectNode) rootNode).remove("enabled");

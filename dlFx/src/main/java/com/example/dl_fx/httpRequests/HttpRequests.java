@@ -1,6 +1,5 @@
 package com.example.dl_fx.httpRequests;
 
-import com.example.dl_spring.dto.AuthorizedUserDto;
 import com.example.dl_spring.dto.main.MainDto;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,6 +13,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class HttpRequests<T> {
+
+    public static String URI = "http://localhost:8080/api/";
 
 
     public static <T extends MainDto> JsonNode PostRequest(T dto, String uri) throws IOException, InterruptedException, URISyntaxException {

@@ -1,6 +1,7 @@
 package com.example.dl_fx;
 
 import com.example.dl_fx.httpRequests.HttpRequests;
+import com.example.dl_spring.dto.AuthorizedUserDto;
 import com.example.dl_spring.model.User;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -53,10 +54,9 @@ public class SecondController implements Initializable {
 
     @FXML
     public void sendRequest() throws IOException, URISyntaxException, InterruptedException {
-        String requestString = "{\n\"name\": \"" + login.getText() + "\",\n" +
-                "\"password\": \"" + password.getText() + "\"\n}";
+        AuthorizedUserDto authorizedUserDto = new AuthorizedUserDto(login.getText(), password.getText());
         String uri = "http://localhost:8080/api/page";
-        JsonNode rootNode = HttpRequests.PostRequest(requestString, uri);
+        JsonNode rootNode = HttpRequests.PostRequest(authorizedUserDto, uri);
         ObjectMapper objectMapper = new ObjectMapper();
         ((ObjectNode) rootNode).remove("enabled");
         ((ObjectNode) rootNode).remove("authorities");

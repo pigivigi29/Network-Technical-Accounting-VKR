@@ -32,4 +32,5 @@ module dlSpring {
     exports com.example.dl_spring.service;
     exports com.example.dl_spring.repository;
     exports com.example.dl_spring.dto;
+    exports com.example.dl_spring.dto.main;
 }

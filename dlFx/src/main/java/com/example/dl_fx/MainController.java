@@ -34,7 +34,7 @@ public class MainController implements Initializable {
     @FXML
     public void loadWeatherForecast() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("SecondController.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("AuthController.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         Stage stage = (Stage) button.getScene().getWindow();
         stage.setTitle("Authorization page");
@@ -45,14 +45,14 @@ public class MainController implements Initializable {
 
     @FXML
     public void sendRequest() throws URISyntaxException, IOException, InterruptedException {
-        long id = 1L;
-        String uri = HttpRequests.URI + "page/" + id;
+        String uri = "api/page/1";
         JsonNode rootNode = HttpRequests.GetRequest(uri);
         ObjectMapper objectMapper = new ObjectMapper();
         ((ObjectNode) rootNode).remove("enabled");
         ((ObjectNode) rootNode).remove("authorities");
         User user = objectMapper.treeToValue(rootNode, User.class);
         user.setPassword("****");
+        System.out.println(user);
         label.setText(user.toString());
     }
 

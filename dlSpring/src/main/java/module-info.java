@@ -18,12 +18,17 @@ module dlSpring {
     requires org.hibernate.orm.core;
     requires java.base;
     requires spring.aop;
+    requires org.apache.tomcat.embed.core;
+    requires jjwt;
+    requires org.slf4j;
 
     opens com.example.dl_spring to spring.core;
     opens com.example.dl_spring.config to spring.core, spring.beans, spring.context;
     opens com.example.dl_spring.model to org.hibernate.orm.core, spring.core;
     opens com.example.dl_spring.service to spring.beans, spring.core;
     opens com.example.dl_spring.controller to spring.beans, spring.core, spring.web;
+    opens com.example.dl_spring.in to spring.beans;
+    opens com.example.dl_spring.util to spring.core;
 
     exports com.example.dl_spring;
     exports com.example.dl_spring.model;
@@ -33,4 +38,7 @@ module dlSpring {
     exports com.example.dl_spring.repository;
     exports com.example.dl_spring.dto;
     exports com.example.dl_spring.dto.main;
+    exports com.example.dl_spring.in;
+    exports com.example.dl_spring.util;
+    exports com.example.dl_spring.exception;
 }

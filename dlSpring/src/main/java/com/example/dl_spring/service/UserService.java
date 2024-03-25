@@ -45,6 +45,11 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id).get();
     }
 
+    public User getUserByName(String name) {
+        return userRepository.findByName(name);
+    }
+
+
 
 
     @Override

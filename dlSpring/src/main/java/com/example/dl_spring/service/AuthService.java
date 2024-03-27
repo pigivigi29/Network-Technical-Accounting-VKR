@@ -26,7 +26,7 @@ public class AuthService {
                     new UsernamePasswordAuthenticationToken(authorizedUserDto.getName(), authorizedUserDto.getPassword()));
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>(new AuthException(HttpStatus.UNAUTHORIZED.value(),
-                    "Incorrect email or password"), HttpStatus.UNAUTHORIZED);
+                    "Incorrect login or password"), HttpStatus.UNAUTHORIZED);
         }
 
         User user = userService.getUserByName(authorizedUserDto.getName());

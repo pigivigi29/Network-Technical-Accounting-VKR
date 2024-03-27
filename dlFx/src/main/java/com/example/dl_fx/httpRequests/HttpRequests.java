@@ -15,11 +15,17 @@ import java.net.http.HttpResponse;
 
 public class HttpRequests<T> {
 
+    public static final String AUTH_EXCEPTION = "Incorrect login or password";
+
     public static final String URI = "http://localhost:8080/";
 
-    public static String TOKEN = "";
+    private static String TOKEN = "";
 
-    public static  String AuthRequest(AuthorizedUserDto dto, String uri) throws IOException, InterruptedException, URISyntaxException {
+    public static void setTOKEN(String token) {
+        TOKEN = token;
+    }
+
+    public static String AuthRequest(AuthorizedUserDto dto, String uri) throws IOException, InterruptedException, URISyntaxException {
         ObjectMapper objectMapper = new ObjectMapper();
 
         HttpClient client = HttpClient.newHttpClient();
@@ -32,7 +38,9 @@ public class HttpRequests<T> {
                 request,
                 HttpResponse.BodyHandlers.ofString()
         );
-
+        if (response.body().contains(AUTH_EXCEPTION)) {
+            return AUTH_EXCEPTION;
+        }
         return response.body();
     }
 

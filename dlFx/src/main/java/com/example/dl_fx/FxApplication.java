@@ -11,9 +11,9 @@ public class FxApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("MainController.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("AuthController.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        stage.setTitle("Authorization page");
         stage.setScene(scene);
         stage.show();
     }

@@ -1,5 +1,6 @@
-package com.example.dl_fx;
+package com.example.dl_fx.controller;
 
+import com.example.dl_fx.controller.main.MainController;
 import com.example.dl_fx.httpRequests.HttpRequests;
 import com.example.dl_spring.model.User;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -14,16 +15,12 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+public class MainPageController extends MainController implements Initializable {
     @FXML
     private Label label;
     @FXML
@@ -32,15 +29,8 @@ public class MainController implements Initializable {
     private Button button2;
 
     @FXML
-    public void loadWeatherForecast() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("AuthController.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-        Stage stage = (Stage) button.getScene().getWindow();
-        stage.setTitle("Authorization page");
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+    public void next() throws IOException {
+        nextPage(button, "AuthController page", getFxmlPackage() + "AuthController.fxml");
     }
 
     @FXML

@@ -1,5 +1,7 @@
-package com.example.dl_fx;
+package com.example.dl_fx.controller;
 
+import com.example.dl_fx.FxApplication;
+import com.example.dl_fx.controller.main.MainController;
 import com.example.dl_fx.httpRequests.HttpRequests;
 import com.example.dl_spring.dto.AuthorizedUserDto;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -17,9 +19,9 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.ResponseEntity;
 
-
-public class AuthController implements Initializable {
+public class AuthController extends MainController implements Initializable {
     @FXML
     private Label label;
     @FXML
@@ -32,23 +34,23 @@ public class AuthController implements Initializable {
     private TextField password;
 
     @FXML
-    public void loadWeatherForecast() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("MainController.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-        Stage stage = (Stage) button.getScene().getWindow();
-        stage.setTitle("Authorization page");
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+    public void next() throws IOException {
+        nextPage(button, "Main page", getFxmlPackage() + "MainPageController.fxml");
     }
 
     @FXML
     public void sendRequest() throws IOException, URISyntaxException, InterruptedException {
         AuthorizedUserDto authorizedUserDto = new AuthorizedUserDto(login.getText(), password.getText());
         String uri = "login";
-        HttpRequests.TOKEN = HttpRequests.AuthRequest(authorizedUserDto, uri);
-        loadWeatherForecast();
+        String response = HttpRequests.AuthRequest(authorizedUserDto, uri);
+        if (response.contains(HttpRequests.AUTH_EXCEPTION)) {
+            label.setText(HttpRequests.AUTH_EXCEPTION);
+            login.setText("");
+            password.setText("");
+        } else {
+            HttpRequests.setTOKEN(response);
+            nextPage(button, "Main page", getFxmlPackage() + "MainPageController.fxml");
+        }
     }
 
     @Override

@@ -22,9 +22,7 @@ public class MainController {
 
     @GetMapping("/page/{id}")
     public ResponseEntity<User> getUser(@PathVariable Long id) {
-        System.out.println(id);
         User user = service.getUser(id);
-        System.out.println(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 

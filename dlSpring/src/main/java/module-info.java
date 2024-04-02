@@ -1,4 +1,4 @@
-module dlSpring {
+module com.example.dlSpring {
     requires spring.security.config;
     requires spring.context;
     requires spring.beans;
@@ -22,23 +22,25 @@ module dlSpring {
     requires jjwt;
     requires org.slf4j;
 
-    opens com.example.dl_spring to spring.core;
-    opens com.example.dl_spring.config to spring.core, spring.beans, spring.context;
-    opens com.example.dl_spring.model to org.hibernate.orm.core, spring.core;
-    opens com.example.dl_spring.service to spring.beans, spring.core;
-    opens com.example.dl_spring.controller to spring.beans, spring.core, spring.web;
-    opens com.example.dl_spring.in to spring.beans;
-    opens com.example.dl_spring.util to spring.core;
+    opens com.example.dlSpring to spring.core, com.example.dlFx;
+    opens com.example.dlSpring.config to spring.core, spring.beans, spring.context;
+    opens com.example.dlSpring.model to org.hibernate.orm.core, spring.core, com.example.dlFx;
+    opens com.example.dlSpring.dto to spring.core, com.example.dlFx;
+    opens com.example.dlSpring.dto.main to spring.core, com.example.dlFx;
+    opens com.example.dlSpring.service to spring.beans, spring.core;
+    opens com.example.dlSpring.controller to spring.beans, spring.core, spring.web;
+    opens com.example.dlSpring.in to spring.beans;
+    opens com.example.dlSpring.util to spring.core;
 
-    exports com.example.dl_spring;
-    exports com.example.dl_spring.model;
-    exports com.example.dl_spring.controller;
-    exports com.example.dl_spring.config;
-    exports com.example.dl_spring.service;
-    exports com.example.dl_spring.repository;
-    exports com.example.dl_spring.dto;
-    exports com.example.dl_spring.dto.main;
-    exports com.example.dl_spring.in;
-    exports com.example.dl_spring.util;
-    exports com.example.dl_spring.exception;
+    exports com.example.dlSpring;
+    exports com.example.dlSpring.model;
+    exports com.example.dlSpring.controller;
+    exports com.example.dlSpring.config;
+    exports com.example.dlSpring.service;
+    exports com.example.dlSpring.repository;
+    exports com.example.dlSpring.dto;
+    exports com.example.dlSpring.dto.main;
+    exports com.example.dlSpring.in;
+    exports com.example.dlSpring.util;
+    exports com.example.dlSpring.exception;
 }

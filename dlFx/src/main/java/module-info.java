@@ -1,14 +1,14 @@
-module dlFx {
+module com.example.dlFx {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.net.http;
-    requires dlSpring;
+    requires transitive com.example.dlSpring;
     requires com.fasterxml.jackson.databind;
     requires spring.web;
 
-    opens com.example.dl_fx to javafx.fxml;
+    opens com.example.dlFx to javafx.fxml;
+    opens com.example.dlFx.controller to javafx.fxml;
 
-    exports com.example.dl_fx;
-    exports com.example.dl_fx.controller;
-    opens com.example.dl_fx.controller to javafx.fxml;
+    exports com.example.dlFx;
+    exports com.example.dlFx.controller;
 }

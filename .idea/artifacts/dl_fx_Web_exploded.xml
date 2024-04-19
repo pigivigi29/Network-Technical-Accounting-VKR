@@ -10,8 +10,8 @@
           <element id="module-output" name="dlSpring" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="dlFx/web/Web" />
       <element id="javaee-facet-resources" facet="dlSpring/web/Web" />
+      <element id="javaee-facet-resources" facet="dlFx/web/Web" />
     </root>
   </artifact>
 </component>
